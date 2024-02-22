@@ -54,7 +54,7 @@ class Login_PageState extends State<Login_Page> {
                         ),
                       ),
                       const Text(
-                        "Welcome Back!",
+                        "Welcome Back!!",
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
