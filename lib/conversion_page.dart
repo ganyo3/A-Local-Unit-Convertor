@@ -15,6 +15,8 @@ class Login_PageState extends State<Conversion_Page> {
   String dropdownValue = 'Gari';
   String dropdownlocalValue = 'Olonka';
   String dropdownstandardValue = 'Kilogram(kg)';
+  double value = 0;
+  double convertedValue = 0;
   @override
   Widget build(BuildContext context) {
     //Total Page Size
@@ -22,11 +24,11 @@ class Login_PageState extends State<Conversion_Page> {
 
     return MaterialApp(
       home: Scaffold(
-         backgroundColor: const Color.fromARGB(255, 151, 137, 93),
+        backgroundColor: const Color.fromARGB(255, 151, 137, 93),
         drawer: callDrawer(context),
         appBar: AppBar(
           centerTitle: true,
-         backgroundColor: const Color.fromARGB(255, 151, 137, 93),
+          backgroundColor: const Color.fromARGB(255, 151, 137, 93),
           title: const Text(
             'GhMetric',
             style: TextStyle(
@@ -72,7 +74,7 @@ class Login_PageState extends State<Conversion_Page> {
                     children: [
                       Container(
                         margin: EdgeInsets.symmetric(
-                          horizontal: size.width*0.07,
+                          horizontal: size.width * 0.07,
                         ),
                         padding: EdgeInsets.only(
                           left: size.width * 0.1,
@@ -82,8 +84,9 @@ class Login_PageState extends State<Conversion_Page> {
                             borderRadius: BorderRadius.circular(10)),
                         child: Row(
                           children: [
-                            const Text("Ingredient:     ",),
-             
+                            const Text(
+                              "Ingredient:     ",
+                            ),
                             DropdownButton(
                               // padding: const EdgeInsets.all(3),
                               borderRadius: BorderRadius.circular(10),
@@ -211,7 +214,8 @@ class Login_PageState extends State<Conversion_Page> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
                               alignment: Alignment.center,
                               child: FloatingActionButton.small(
                                 backgroundColor:
@@ -222,7 +226,8 @@ class Login_PageState extends State<Conversion_Page> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 224, 212, 212),
+                                  color:
+                                      const Color.fromARGB(255, 224, 212, 212),
                                   borderRadius: BorderRadius.circular(5)),
                               width: size.width * 0.35,
                               alignment: Alignment.topLeft,

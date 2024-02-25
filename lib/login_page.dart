@@ -74,44 +74,48 @@ class Login_PageState extends State<Login_Page> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
-                      //TODO: Adding Form
+                      //TODO: Adding Form;
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
                         child: Column(
                           children: [
                             Container(
-                                decoration: const BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 224, 212, 212),
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: TextFormField(
                                 decoration: const InputDecoration(
                                   label: Text("Email"),
                                   enabledBorder: UnderlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
                                       borderSide: BorderSide(
-                                    width: 5,
-                                  )),
+                                        width: 5,
+                                      )),
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: size.height * 0.01,
                             ),
-                           Container(
-                               decoration: const BoxDecoration(
+                            Container(
+                              decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 224, 212, 212),
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: TextFormField(
                                 obscureText: true,
                                 decoration: const InputDecoration(
                                   label: Text("Password"),
                                   enabledBorder: UnderlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
                                       borderSide: BorderSide(
-                                    width: 5,
-                                  )),
+                                        width: 5,
+                                      )),
                                 ),
                               ),
                             ),
@@ -129,7 +133,8 @@ class Login_PageState extends State<Login_Page> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context)=>const Conversion_Page()),
+                            MaterialPageRoute(
+                                builder: (context) => const Conversion_Page()),
                           );
                         },
                         label: const Text(
