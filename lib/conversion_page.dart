@@ -12,11 +12,88 @@ class Conversion_Page extends StatefulWidget {
 }
 
 class Login_PageState extends State<Conversion_Page> {
-  String dropdownValue = 'Gari';
-  String dropdownlocalValue = 'Olonka';
-  String dropdownstandardValue = 'Kilogram(kg)';
+  TextEditingController textEditingController = TextEditingController();
+  var velocityEditingController = TextEditingController();
+  var finalValue = TextEditingController();
+  int initialValue = 0;
+  int valueFinal = 0;
+  String foodProduct = 'Gari';
+  String localUnit = 'Olonka';
+  String standardUnit = 'Kilogram(kg)';
   double value = 0;
   double convertedValue = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    finalValue.addListener(() => setState(() {}));
+  }
+
+  String totalCalculated() {
+    String sam = "";
+
+    if (initialValue >= 0 && foodProduct == "Gari" && localUnit == "Olonka") {
+      sam = (initialValue * 2.56).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+       );
+      }
+    else if (initialValue >= 0 && foodProduct == "Rice" && localUnit == "Olonka") {
+      sam = (initialValue * 3.09).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Maize" && localUnit == "Olonka") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Groundnut" && localUnit == "Olonka") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Beans" && localUnit == "Olonka") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Sugar" && localUnit == "Margarine-Cup") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Salt" && localUnit == "Margarine-Cup") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Onion" && localUnit == "Paint Rubber") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else if (initialValue >= 0 && foodProduct == "Tomato" && localUnit == "Paint Rubber") {
+      sam = (initialValue * 5.67).toString();
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    else {
+      finalValue.value = finalValue.value.copyWith(
+        text: sam.toString(),
+      );
+    }
+    return sam;
+  }
+
   @override
   Widget build(BuildContext context) {
     //Total Page Size
@@ -91,7 +168,7 @@ class Login_PageState extends State<Conversion_Page> {
                               // padding: const EdgeInsets.all(3),
                               borderRadius: BorderRadius.circular(10),
                               hint: const Text("Ingredient"),
-                              value: dropdownValue,
+                              value: foodProduct,
                               items: [
                                 'Gari',
                                 'Rice',
@@ -110,7 +187,7 @@ class Login_PageState extends State<Conversion_Page> {
                               }).toList(),
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  dropdownValue = newValue!;
+                                  foodProduct = newValue!;
                                 });
                               },
                             ),
@@ -135,7 +212,7 @@ class Login_PageState extends State<Conversion_Page> {
                                   padding: const EdgeInsets.all(5),
                                   borderRadius: BorderRadius.circular(10),
                                   hint: const Text("Local Unit"),
-                                  value: dropdownlocalValue,
+                                  value: localUnit,
                                   items: [
                                     'Olonka',
                                     'Margarine-Cup',
@@ -148,7 +225,7 @@ class Login_PageState extends State<Conversion_Page> {
                                   }).toList(),
                                   onChanged: (String? newValue) {
                                     setState(() {
-                                      dropdownlocalValue = newValue!;
+                                      localUnit = newValue!;
                                     });
                                   },
                                 ),
@@ -169,7 +246,7 @@ class Login_PageState extends State<Conversion_Page> {
                                   padding: const EdgeInsets.all(5),
                                   borderRadius: BorderRadius.circular(10),
                                   hint: const Text("Standard unit"),
-                                  value: dropdownstandardValue,
+                                  value: standardUnit,
                                   items: [
                                     'Kilogram(kg)',
                                     'Pound(lb)',
@@ -182,7 +259,7 @@ class Login_PageState extends State<Conversion_Page> {
                                   }).toList(),
                                   onChanged: (String? newValue) {
                                     setState(() {
-                                      dropdownstandardValue = newValue!;
+                                      standardUnit = newValue!;
                                     });
                                   },
                                 ),
@@ -205,6 +282,18 @@ class Login_PageState extends State<Conversion_Page> {
                               width: size.width * 0.35,
                               alignment: Alignment.topLeft,
                               child: TextFormField(
+                                controller: textEditingController,
+                                onChanged: (textEditingController) {
+                                  setState(() {
+                                    initialValue = int.parse(
+                                        textEditingController.toString());
+                                  });
+                                },
+                                onTap: () {
+                                  setState(() {
+                                    textEditingController.clear();
+                                  });
+                                },
                                 keyboardType: TextInputType.number,
                                 decoration: const InputDecoration(
                                   label: Text("Value"),
@@ -232,10 +321,28 @@ class Login_PageState extends State<Conversion_Page> {
                               width: size.width * 0.35,
                               alignment: Alignment.topLeft,
                               child: TextFormField(
-                                style: TextField.materialMisspelledTextStyle,
+                                key: Key(totalCalculated()),
+                                controller: finalValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    finalValue.value =
+                                        finalValue.value.copyWith(
+                                      text: value.toString(),
+                                    );
+                                  });
+                                },
+                                onTap: () {
+                                  setState(() {
+                                    finalValue.clear();
+                                    finalValue.value =
+                                        finalValue.value.copyWith(
+                                      text: '',
+                                    );
+                                  });
+                                },
                                 keyboardType: TextInputType.number,
                                 decoration: const InputDecoration(
-                                  label: Text("Value"),
+                                  // label: Text("Value"),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(width: 0.15)),
                                 ),
